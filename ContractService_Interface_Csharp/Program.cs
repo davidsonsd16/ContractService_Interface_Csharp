@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using ContractService_Interface_Csharp.Entities;
+using ContractService_Interface_Csharp.Services;
 
 namespace ContractService_Interface_Csharp {
     class Program {
@@ -19,7 +20,8 @@ namespace ContractService_Interface_Csharp {
             Console.Write("Enter number of installments: ");
             int n = int.Parse(Console.ReadLine());
 
-            //
+            ContractService contractService = new ContractService(new PaypalService());
+            contractService.ProcessContractService(contract, n);
 
             Console.WriteLine(contract);
         }
